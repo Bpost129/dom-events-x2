@@ -5,9 +5,11 @@ const inputElement = document.querySelector('input')
 
 console.dir(inputElement)
 
-likeButton.addEventListener('click', () => {
+const handleLike = () => {
   console.log('You clicked me!')
-})
+}
+
+likeButton.addEventListener('click', handleLike)
 
 commentButton.addEventListener('click', () => {
   if (inputElement.value) {
