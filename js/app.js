@@ -25,17 +25,21 @@ const handleReaction = (e) => {
   if (e.target.id === 'like-button') {
     likesCount += 1 
     likesCountElement.textContent = likesCount
+    likeButton.removeEventListener('click', handleReaction)
+    dislikeButton.addEventListener('click', handleReaction)
   } 
   if (e.target.id === 'dislike-button') {
     likesCount -= 1 
     likesCountElement.textContent = likesCount
+    dislikeButton.removeEventListener('click', handleReaction)
+    likeButton.addEventListener('click', handleReaction)
   }
   e.stopPropagation()
 }
 
-divElement.addEventListener('click', handleReaction)
-// likeButton.addEventListener('click', handleReaction)
-// dislikeButton.addEventListener('click', handleReaction)
+// divElement.addEventListener('click', handleReaction)
+likeButton.addEventListener('click', handleReaction)
+dislikeButton.addEventListener('click', handleReaction)
 
 commentButton.addEventListener('click', () => {
   if (inputElement.value) {
