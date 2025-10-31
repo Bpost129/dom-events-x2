@@ -1,15 +1,20 @@
 const likeButton = document.querySelector('#like-button')
+const dislikeButton = document.querySelector('#dislike-button')
 const commentButton = document.querySelector('#comment-button')
 const commentList = document.querySelector('ul')
 const inputElement = document.querySelector('input')
+const likesCountElement = document.querySelector('#likes-count')
 
-console.dir(inputElement)
+let likesCount = 0
 
-const handleLike = () => {
-  console.log('You clicked me!')
+const handleReaction = (e) => {
+  e.target.id === 'like-button' ? likesCount += 1 : likesCount -= 1
+  likesCountElement.textContent = likesCount
+  console.log(likesCount)
 }
 
-likeButton.addEventListener('click', handleLike)
+likeButton.addEventListener('click', handleReaction)
+dislikeButton.addEventListener('click', handleReaction)
 
 commentButton.addEventListener('click', () => {
   if (inputElement.value) {
